@@ -1,17 +1,25 @@
 const path = require('path')
 
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const rootDir = path.resolve(__dirname, '..')
 
-console.log(rootDir)
+const htmlMinifyOptions = {
+  collapseWhitespace: true,
+  decodeEntities: true,
+  removeComments: true,
+  removeEmptyAttributes: true,
+  sortAttributes: true,
+  sortClassName: true
+}
 
 module.exports = {
   mode: 'development',
   context: rootDir,
   entry: {
-    app: [ path.join(rootDir, 'src/js/index.js') ]
+    app: [ path.join(rootDir, 'src/js/app.js') ]
   },
   output: {
     path: path.join(rootDir, 'public/assets'),
@@ -31,10 +39,9 @@ module.exports = {
       template: path.join(rootDir, 'src/views/index.html'),
       filename: path.join(rootDir, 'public/index.html'),
       chunks: [ 'app' ],
-      env: {
-        label: 'Hello world'
-      }
-    })
+      minify: htmlMinifyOptions
+    }),
+    new ExtractTextPlugin('css/[name].[hash:5].css')
   ],
   resolve: {
     modules: [ 'src', 'node_modules' ]
@@ -42,12 +49,41 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [ 'env', {
+                  target: {
+                    browser: [ 'last 2 versions', 'safari >=7' ]
+                  }
+                } ]
+              ],
+              plugins: [
+                'transform-runtime'
+              ]
+            }
+          }
+        ]
+      },
+      {
+        test: /\.styl$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [ 'css-loader', 'stylus-loader' ]
+        })
+      },
+      {
         test: /\.html$/,
         use: [
           {
             loader: 'html-loader',
             options: {
-              interpolate: true
+              interpolate: true,
+              attrs: false
             }
           }
         ]
@@ -59,6 +95,18 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: 'img/[name].[hash:5].[ext]',
+              publicPath: '/assets/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(ttf|eot|woff|woff2)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'fonts/[name].[hash:5].[ext]',
               publicPath: '/assets/'
             }
           }

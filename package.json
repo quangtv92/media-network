@@ -3,12 +3,21 @@
   "version": "1.0.0",
   "description": "Website for MediaNetwork",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "kouto-swiss": "1.1.0"
+  },
   "devDependencies": {
+    "babel-loader": "7.1.4",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-preset-env": "1.6.1",
     "clean-webpack-plugin": "0.1.19",
+    "css-loader": "0.28.11",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
     "file-loader": "1.1.11",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
+    "style-loader": "0.21.0",
+    "stylus-loader": "3.0.2",
     "webpack": "4.6.0",
     "webpack-cli": "2.0.15"
   },
