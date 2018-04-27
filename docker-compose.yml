@@ -1,0 +1,17 @@
+version: '3'
+services:
+  media-portfolio:
+    build: ./docker/node
+    container_name: media.portfolio
+    command: tail -f /dev/null
+    volumes:
+      - .:/usr/src
+      - /usr/src/node_modules
+
+  nginx:
+    build: ./docker/nginx
+    container_name: media.portfolio.nginx
+    volumes:
+      - .:/usr/src
+    ports:
+      - "3007:80"
