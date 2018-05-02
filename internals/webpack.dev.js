@@ -19,7 +19,7 @@ module.exports = {
   mode: 'development',
   context: rootDir,
   entry: {
-    app: [ path.join(rootDir, 'src/js/app.js') ]
+    home: [ path.join(rootDir, 'src/js/home.js') ]
   },
   output: {
     path: path.join(rootDir, 'public/assets'),
@@ -38,7 +38,7 @@ module.exports = {
       inject: true,
       template: path.join(rootDir, 'src/views/pages/home'),
       filename: path.join(rootDir, 'public/index.html'),
-      chunks: [ 'app' ],
+      chunks: [ 'home' ],
       minify: htmlMinifyOptions
     }),
     new ExtractTextPlugin('css/[name].[hash:5].css')
