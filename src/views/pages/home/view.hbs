@@ -1,8 +1,7 @@
-<!doctype html>
-<html>
-  <body>
+{{#> layouts/default}}
+  {{#*inline "content-body"}}
     {{> partials/header.hbs}}
     <div class="img"></div>
     <img src="{{img}}">
-  </body>
-</html>
+  {{/inline}}
+{{/ layouts/default}}
