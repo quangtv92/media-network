@@ -51,6 +51,7 @@ export default {
     new ExtractTextPlugin('css/[name].[hash:5].css')
   ],
   resolve: {
+    extensions: [ '.js', '.json', '.styl' ],
     modules: [ 'src', 'node_modules' ]
   },
   module: {
@@ -80,7 +81,20 @@ export default {
         test: /\.styl$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: [ 'css-loader', 'stylus-loader' ]
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: false
+              }
+            },
+            {
+              loader: 'stylus-loader',
+              options: {
+                import: [ '~kouto-swiss/index.styl' ]
+              }
+            }
+          ]
         })
       },
       {
