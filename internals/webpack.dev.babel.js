@@ -41,6 +41,13 @@ export default {
       chunks: [ 'home' ],
       minify: htmlMinifyOptions
     }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: path.join(rootDir, 'src/views/pages/about-us'),
+      filename: path.join(rootDir, 'public/about-us.html'),
+      chunks: [ 'about-us' ],
+      minify: htmlMinifyOptions
+    }),
     new ExtractTextPlugin('css/[name].[hash:5].css')
   ],
   resolve: {
