@@ -11,6 +11,7 @@
     "babel-loader": "7.1.4",
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.6.1",
+    "babel-register": "6.26.0",
     "clean-webpack-plugin": "0.1.19",
     "css-loader": "0.28.11",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
@@ -24,7 +25,7 @@
     "webpack-cli": "2.0.15"
   },
   "scripts": {
-    "start": "webpack --config ./internals/webpack.dev.js --watch"
+    "start": "webpack --config ./internals/webpack.dev.babel.js --watch"
   },
   "repository": {
     "type": "git",

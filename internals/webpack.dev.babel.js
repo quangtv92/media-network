@@ -1,8 +1,8 @@
-const path = require('path')
+import path from 'path'
 
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+import CleanWebpackPlugin from 'clean-webpack-plugin'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const rootDir = path.resolve(__dirname, '..')
 
@@ -15,7 +15,7 @@ const htmlMinifyOptions = {
   sortClassName: true
 }
 
-module.exports = {
+export default {
   mode: 'development',
   context: rootDir,
   entry: {
