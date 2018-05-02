@@ -31,12 +31,12 @@ module.exports = {
       path.join(rootDir, './public')
     ], {
       verbose: true,
-      watch: true,
+      watch: false,
       allowExternal: true
     }),
     new HtmlWebpackPlugin({
       inject: true,
-      template: path.join(rootDir, 'src/views/index.html'),
+      template: path.join(rootDir, 'src/views/pages/home'),
       filename: path.join(rootDir, 'public/index.html'),
       chunks: [ 'app' ],
       minify: htmlMinifyOptions
@@ -95,7 +95,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: 'img/[name].[hash:5].[ext]',
-              publicPath: '/assets/'
+              publicPath: '/assets/',
+              emitFile: true
             }
           }
         ]
@@ -108,6 +109,17 @@ module.exports = {
             options: {
               name: 'fonts/[name].[hash:5].[ext]',
               publicPath: '/assets/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.hbs$/,
+        use: [
+          {
+            loader: 'handlebars-loader',
+            options: {
+              rootRelative: path.join(rootDir, 'src/views/') + '/'
             }
           }
         ]

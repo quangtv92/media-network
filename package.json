@@ -4,6 +4,7 @@
   "description": "Website for MediaNetwork",
   "main": "index.js",
   "dependencies": {
+    "handlebars": "4.0.11",
     "kouto-swiss": "1.1.0"
   },
   "devDependencies": {
@@ -14,6 +15,7 @@
     "css-loader": "0.28.11",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "file-loader": "1.1.11",
+    "handlebars-loader": "1.7.0",
     "html-loader": "0.5.5",
     "html-webpack-plugin": "3.2.0",
     "style-loader": "0.21.0",
