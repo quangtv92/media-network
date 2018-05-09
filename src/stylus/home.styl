@@ -1,0 +1,27 @@
+@require './space-mono'
+
+meyer-reset()
+box-sizing-reset()
+normalize()
+
+html, body
+  font-family: 'Space Mono'
+
+.img
+  background-image: url('~img/dragging.png')
+  size: 100px 100px
+
+
+colorone = #0f0
+colortwo = #f00
+stylusMixin()
+  font-site 1em
+  
+.test
+  color colorone
+  background-color colortwo
+
+h1
+  stylusMixin()
+  color colorone
+  background-color colortwo
